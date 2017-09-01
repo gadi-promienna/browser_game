@@ -104,7 +104,7 @@ class Animal
 
     /**
      * @var src\UserBundle\Entity\User as $user
-     * @ORM\ManyToOne(targetEntity="Player", inversedBy="animals")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Player", inversedBy="animals")
      * JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $owner;
