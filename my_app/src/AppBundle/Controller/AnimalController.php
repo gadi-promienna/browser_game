@@ -1,0 +1,330 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use AppBundle\Entity\Animal;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+;
+
+/**
+ * Animal controller.
+ *
+ * @Route("animal")
+ */
+class AnimalController extends Controller
+{
+    /**
+     * Lists all animal entities.
+     *
+     * @Route("/", name="animal_index")
+     * @Method("GET")
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $animals = $em->getRepository('AppBundle:Animal')->findAll();
+
+        return $this->render('animal/index.html.twig', array(
+            'animals' => $animals,
+        ));
+    }
+
+        /**
+     * Give animal password.
+     *
+     * @Route("/find_animal", name="find_animal")
+     * @Method({"GET", "POST"})
+     */
+    public function findAction(Request $request)
+    {
+        $form = $this->createForm('AppBundle\Form\FindAnimalType');
+        $form->handleRequest($request);
+        $password=$form->get('password')->getData();
+        $name = $form->get('name')->getData();
+         if ($form->isSubmitted() && $form->isValid()) 
+         {
+            $em = $this->getDoctrine()->getManager();
+            $animals = $em->getRepository('AppBundle:Animal');
+            $animal = $animals->findOneByName($name);
+            
+               if($animal!=Null)
+                    { 
+                    $animal_password = $animal->getPassword();
+                    if($animal_password==$password)
+                        {  
+                            
+                            $this->get('session')->set('animal_access', $animal);
+                            return $this->render('animal/show.html.twig', array(
+                                 'animal' => $animal));
+                        }
+                    else
+                        {
+                             $this->addFlash('error','Hasło do opieki nad stworkiem jest inne');
+                            
+                        }
+                    }
+                else
+                    {
+
+                             $this->addFlash('error','Stworek o takim imieniu nie istnieje.');
+                    }
+        }
+
+
+        return $this->render('animal/find_animal.html.twig', array(
+        'form' => $form->createView()));
+    }
+
+    /**
+     * Creates a new animal entity.
+     *
+     * @Route("/new", name="animal_new")
+     * @Method({"GET", "POST"})
+     */
+    public function newAction(Request $request)
+    {
+        $animal = new Animal();
+        $form = $this->createForm('AppBundle\Form\AnimalType', $animal);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($animal);
+            $this->get('session')->set('animal_access', $animal);
+            
+            $animal->setEnergy(10);
+            $animal->setHapiness(5);
+            $animal->setIntelligence(1);
+            $animal->setStrength(1);
+            $animal->setOwner($this->get('fos_user.user_provider.username'));
+
+            $em->flush();
+
+            return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
+        }
+
+        return $this->render('animal/new.html.twig', array(
+            'animal' => $animal,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a animal entity.
+     *
+     * @Route("/{id}", name="animal_show")
+     * @Method("GET")
+     */
+    public function showAction(Animal $animal)
+    {
+        $deleteForm = $this->createDeleteForm($animal);
+
+        return $this->render('animal/show.html.twig', array(
+            'animal' => $animal,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing animal entity.
+     *
+     * @Route("/{id}/edit", name="animal_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction(Request $request, Animal $animal)
+    {
+        $deleteForm = $this->createDeleteForm($animal);
+        $editForm = $this->createForm('AppBundle\Form\AnimalType', $animal);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('animal_edit', array('id' => $animal->getId()));
+        }
+
+        return $this->render('animal/edit.html.twig', array(
+            'animal' => $animal,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a animal entity.
+     *
+     * @Route("/{id}", name="animal_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Request $request, Animal $animal)
+    {
+        $form = $this->createDeleteForm($animal);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($animal);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('animal_index');
+    }
+
+
+
+
+
+    /**
+     * Creates a form to delete a animal entity.
+     *
+     * @param Animal $animal The animal entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Animal $animal)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('animal_delete', array('id' => $animal->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
+
+    /**
+     * @Route("/feed/{animal}/{food}", name="feed_animal")
+     */
+     public function feed_animal($animal, $food)
+     {
+            $em = $this->getDoctrine()->getManager();
+            $animals = $em->getRepository('AppBundle:Animal');
+            $animal = $animals->findOneById($animal);
+            $foods = $em->getRepository('AppBundle:Food');
+            $food = $foods->findOneById($food);
+            if($animal->getEnergy()<20)
+            {
+                 
+                $changes =$this->get('app.repository.changes')->energyChange($animal, $food);
+            }
+            else
+            {
+                $changes =$this->get('app.repository.changes')->widthChange($animal, $food);
+
+                $changes =$this->get('app.repository.changes')->heightChange($animal, $food);
+                }
+
+            $changes =$this->get('app.repository.changes')->timeChanges($animal);
+
+            $em->flush();
+            return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
+
+     }
+
+
+ /**
+     * Deletes without form a animal entity.
+     *
+     * @Route("delete/{id}", name="simple_delete_animal")
+     * @Method({"GET", "DELETE"})
+     */
+
+    public function simple_delete_Action(Request $request, Animal $animal)
+    {
+
+
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($animal);
+            $em->flush();
+
+        return $this->redirectToRoute('animal_index');
+    }
+
+
+    /**
+     * @Route("/walk/{animal}/{place}", name="walk_animal")
+     */
+     public function walk_your_animal($animal, $place)
+     {
+            $em = $this->getDoctrine()->getManager();
+            $animals = $em->getRepository('AppBundle:Animal');
+            $animal = $animals->findOneById($animal);
+            $places = $em->getRepository('AppBundle:Place');
+            $place = $places->findOneById($place);
+            if($animal->getEnergy()>5)
+            {
+                 
+                $changes =$this->get('app.repository.changes')->energyChange($animal, $place);
+                $changes =$this->get('app.repository.changes')->strengthChange($animal, $place);
+            }
+            else
+            {
+                $changes =$this->get('app.repository.changes')->widthChange($animal, $place);
+
+                }
+
+            $changes =$this->get('app.repository.changes')->timeChanges($animal);
+
+            $em->flush();
+            return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
+
+     }
+
+      /**
+     * @Route("/play/{animal}/{toy}", name="play_toy")
+     */
+     public function play_toy($animal, $toy)
+     {
+            $em = $this->getDoctrine()->getManager();
+            $animals = $em->getRepository('AppBundle:Animal');
+            $animal = $animals->findOneById($animal);
+            $toys = $em->getRepository('AppBundle:Toy');
+            $toy = $toys->findOneById($toy);
+            if($animal->getEnergy()>5 && $animal->getSleepiness()>0 && $animal->getHapiness()<30 )
+            {
+                 
+                $changes =$this->get('app.repository.changes')->hapinessChange($animal, $toy);
+                $changes =$this->get('app.repository.changes')->intelligenceChange($animal, $toy);
+            }
+            else
+            {
+               
+            
+            }
+
+            $em->flush();
+            return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
+
+     }
+
+       /**
+     * @Route("/pet/{animal}", name="pet_animal")
+     */
+
+     public function pet_animal($animal)
+     {
+            $em = $this->getDoctrine()->getManager();
+            $animals = $em->getRepository('AppBundle:Animal');
+            $animal = $animals->findOneById($animal);
+            $height = $animal->getHeight();
+            $height= $height - 2;
+            $animal -> setHeight($height);
+            $happiness = $animal->getHapiness();
+            if ($happiness <= 30)
+                {
+                    $happiness= $happiness + 2;
+                }
+
+            $animal -> setHapiness($happiness);
+            $energy = $animal->getEnergy();
+            $energy = $energy - 3;
+            $animal -> setEnergy($energy);
+            $em->flush();
+            return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
+
+     }
+
+
+}

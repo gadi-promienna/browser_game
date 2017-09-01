@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Jedzenie</h1>
+
+    <table>
+        <thead>
+            <tr>
+                
+                <th>Nazwa</th>
+                <th>Obrazek</th>
+                <th>Energii</th>
+                <th>Wzrost</th>
+               <th>Zmiana szerokości</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for food in foods %}
+            <tr>
+                
+                <td>{{ food.name }}</td>
+                <td>{{ food.image }}</td>
+                <td>{{ food.energy }}</td>
+                <td>{{ food.height }}</td>
+                <td>{{ food.width }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('food_show', { 'id': food.id }) }}">Szczegóły</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('food_edit', { 'id': food.id }) }}">Edytuj</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('food_new') }}">Stwórz nowe cuś do jedzenia</a>
+        </li>
+    </ul>
+{% endblock %}

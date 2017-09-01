@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Place</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ place.id }}</td>
+            </tr>
+            <tr>
+                <th>Imię</th>
+                <td>{{ place.name }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ place.image }}</td>
+            </tr>
+            <tr>
+                <th>Radość</th>
+                <td>{{ place.hepiness }}</td>
+            </tr>
+            <tr>
+                <th>Siła</th>
+                <td>{{ place.strength }}</td>
+            </tr>
+            <tr>
+                <th>Energia</th>
+                <td>{{ place.energy }}</td>
+            </tr>
+            <tr>
+                <th>szerokość</th>
+                <td>{{ place.width }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('place_index') }}">Powrót</a>
+        </li>
+        <li>
+            <a href="{{ path('place_edit', { 'id': place.id }) }}">Edytuj</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Usuń">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

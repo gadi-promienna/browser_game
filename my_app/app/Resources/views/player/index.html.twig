@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Players list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Role</th>
+                <th>Mail</th>
+                <th>Lastlogin</th>
+                <th>Imię</th>
+               <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for player in players %}
+            <tr>
+                <td><a href="{{ path('player_show', { 'id': player.id }) }}">{{ player.id }}</a></td>
+                <td>{{ player.login }}</td>
+                <td>{{ player.password }}</td>
+                <td>{{ player.role }}</td>
+                <td>{{ player.mail }}</td>
+                <td>{% if player.lastLogin %}{{ player.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ player.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('player_show', { 'id': player.id }) }}">Szczegóły</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('player_edit', { 'id': player.id }) }}">Edytuj</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('player_new') }}">Create a new player</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "@AppBundle/Resources/views/Default/index.html.twig" %}
+{% block login %}
+    <h2>Wpisz imie i hasło z obroży stworka:</h2>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="Submit" value="znajdź" />
+    {{ form_end(form) }}
+{% endblock %}

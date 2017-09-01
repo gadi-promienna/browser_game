@@ -1,0 +1,14 @@
+
+    <h2>Pobaw się ze zwierzakiem </h2>
+           
+        {% for toy in toys %}
+            
+            <button>   <a href="{{ path('play_toy', { 'animal': animal.id, 'toy': toy.id }) }}">{{ toy.name }}</a>
+            </button>
+               
+        {% endfor %}
+       
+
+
+
+

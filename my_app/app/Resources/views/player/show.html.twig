@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Player</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ player.id }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ player.login }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ player.password }}</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>{{ player.role }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ player.mail }}</td>
+            </tr>
+            <tr>
+                <th>Lastlogin</th>
+                <td>{% if player.lastLogin %}{{ player.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Imię</th>
+                <td>{{ player.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('player_index') }}">Powrót</a>
+        </li>
+        <li>
+            <a href="{{ path('player_edit', { 'id': player.id }) }}">Edytuj</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Usuń">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

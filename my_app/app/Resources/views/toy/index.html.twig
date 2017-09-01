@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lista zabawek</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Obrazek</th>
+                <th>Zmiana radości</th>
+                <th>Zmiana inteligencji</th>
+               <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for toy in toys %}
+            <tr>
+                
+                <td>{{ toy.name }}</td>
+                <td>{{ toy.image }}</td>
+                <td>{{ toy.hapiness }}</td>
+                <td>{{ toy.intelligence }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('toy_show', { 'id': toy.id }) }}">Zobacz</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('toy_edit', { 'id': toy.id }) }}">Edytuj</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('toy_new') }}">Stwórz nową zabawkę</a>
+        </li>
+    </ul>
+{% endblock %}

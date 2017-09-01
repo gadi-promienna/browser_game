@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% set message_class = 'hide' %}
+{% if animal.hapiness > 15 %}
+  {% set animal_class = 'happy' %}
+{% elseif animal.hapiness <= 15 and animal.hapiness > 0  %}
+  {% set animal_class = 'neutral' %}
+{% elseif animal.hapiness <= 0 and animal.hapiness>=-10 %}
+  {% set animal_class = 'sad' %}
+{% elseif animal.hapiness < -10 %}
+  {% set animal_class = 'disappear' %}
+  {% set message_class = 'hopeless' %}
+{% endif %}
+
+{% if animal.energy < -10 %}
+   {% set animal_class = 'disappear' %}
+   {% set message_class = 'burnout' %}
+{% endif %}
+ <center> <h1>{{ animal.name }}, level {{ (animal.strength + animal.intelligence)/10 }} </h1> </center>
+ <hr>
+  <div id='contener'>
+   <div id="animal_status"> 
+      
+
+       <div id="animal_space">
+
+        <div class="{{animal_class}}" id="animal" style="background-color:{{animal.color}}; width:{{animal.width}}px; height: {{animal.height}}px;);">
+        </div>
+
+         <div class="{{message_class}}" id="message" style="background-color:{{animal.color}}; ">
+        </div>
+
+       </div>
+               
+            <br>
+
+                <b>   Wiek: </b>
+                {{ animal.age }}
+
+             
+            
+               <b>  Kolor: </b>
+                {{ animal.color }}
+            
+           
+
+               <b>  Energia: </b>
+                {{ animal.energy }}
+             <br> <br>
+            
+               <b>  Szerokość: </b>
+                {{ animal.width }}
+            
+            
+                <b> Wysokość: </b>
+                {{ animal.height }}
+            
+             <br> <br>
+               <b>  Siła: </b>
+                {{ animal.strength }}
+           
+              <b>  Inteligencja: </b>
+                {{ animal.intelligence }}
+            
+             <br>
+               <b>  Szczęście: </b>
+                {{ animal.hapiness }}
+            
+            
+   
+            <br><br>
+            <a href="{{ path('root') }}">Strona główna</a>
+       
+</div>
+  <div id="action_menu">
+        {% if app.session.get('animal_access').id is defined and app.session.get('animal_access').id == animal.id %}
+            
+                {{ render(controller(
+                    'AppBundle:Food:list', {'animal': animal} )) }}
+
+
+                {{ render(controller(
+                    'AppBundle:Toy:list', {'animal': animal} )) }}
+
+
+                {{ render(controller(
+                    'AppBundle:Place:list', {'animal': animal} )) }}
+
+                    <br> <br>
+             <button> <a href="{{ path('pet_animal', { 'animal': animal.id}) }}"> <h1>Pogłaszcz zwierzaczka </h1></a> </button>
+      
+
+
+            <br>
+          {% else %}
+          <h2> Ładny stworek nie? :P <br>
+          <a href={{path("animal_new")}}> Stwórz sobie własnego :) </a>
+          </h2>
+        {% endif %}
+  </div>
+  </div>
+{% endblock %}

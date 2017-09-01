@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Miejsca na spacery</h1>
+
+    <table>
+        <thead>
+            <tr>
+                
+                <th>Imię</th>
+                <th>Image</th>
+                <th>Radość</th>
+                <th>Siła</th>
+                <th>Energia</th>
+                <th>Zmiana szerokości</th>
+               <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for place in places %}
+            <tr>
+                
+                <td>{{ place.name }}</td>
+                <td>{{ place.image }}</td>
+                <td>{{ place.hepiness }}</td>
+                <td>{{ place.strength }}</td>
+                <td>{{ place.energy }}</td>
+                <td>{{ place.width }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('place_show', { 'id': place.id }) }}">Szczegóły</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('place_edit', { 'id': place.id }) }}">Edytuj</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('place_new') }}">Dodaj miejsce na spacery</a>
+        </li>
+    </ul>
+{% endblock %}

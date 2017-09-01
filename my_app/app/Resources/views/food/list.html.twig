@@ -1,0 +1,14 @@
+
+    <h2>Nakarm zwierzaka</h2>
+           
+        {% for food in foods %}
+            
+            <button>   <a href="{{ path('feed_animal', { 'animal': animal.id, 'food': food.id }) }}">{{ food.name }}</a>
+            </button>
+               
+        {% endfor %}
+       
+
+
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+         
+         {% stylesheets '@bootstrap_css' %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+
+        {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/main.css') }}" />{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+   
+    </head>
+    
+    <body>
+        <div id="user_panel"> 
+             {% if is_granted('ROLE_USER') %}
+            
+                Zalogowany jako {{app.user}}! | <a href='/logout'> Wyloguj się </a>
+            {% else  %} 
+                <a href='/login'> Zaloguj się </a>|
+                <a href='/register'> Zarejestruj się </a>
+           
+        {% endif %}
+         |<a href={{ path('root') }}> Strona główna </a>
+        </div>
+        <div id="content">
+
+            {% block body %}{% endblock %}
+            {% block javascripts %}{% endblock %}
+    {% for flashMessage in app.session.flashbag.get('error') %}
+     <br>
+     <div class="flash-notice">
+         {{ flashMessage }}
+     </div>
+    {% endfor %}
+</div> 
+</body>
+
+</html>

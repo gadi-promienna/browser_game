@@ -1,0 +1,9 @@
+{% extends "@AppBundle/Resources/views/Default/index.html.twig" %}
+{% block login %}
+    <h2>Tworzenie stworka</h2>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Generuj " />
+    {{ form_end(form) }}
+{% endblock %}

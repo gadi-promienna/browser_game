@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lista stworzeń </h1>
+
+    <table>
+        <thead>
+            <tr>
+               
+                <th>Imię</th>
+                <th>Kolor</th>
+                <th>Wiek</th>
+                <th>szerokość</th>
+                <th>Wysokość</th>
+                <th>Siła</th>
+                <th>Inteligencja</th>
+                <th>Radość</th>
+                <th>Senność</th>
+                <th>Energia</th>
+               <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for animal in animals %}
+            <tr>
+                <td>{{ animal.name }}</td>
+                <td>{{ animal.color }}</td>
+                <td>{{ animal.age }}</td>
+                <td>{{ animal.width }}</td>
+                <td>{{ animal.height }}</td>
+                <td>{{ animal.strength }}</td>
+                <td>{{ animal.intelligence }}</td>
+                <td>{{ animal.hapiness }}</td>
+                <td>{{ animal.sleepiness }}</td>
+                <td>{{ animal.energy }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('animal_show', { 'id': animal.id }) }}">Szczegóły</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('animal_edit', { 'id': animal.id }) }}">Edytuj</a>
+                        </li>
+                           <li>
+                            <a href="{{ path('simple_delete_animal', { 'id': animal.id }) }}">Usuń</a>
+                        </li>
+
+                </ul> 
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('animal_new') }}">Dodaj stworka </a>
+        </li>
+    </ul>
+{% endblock %}

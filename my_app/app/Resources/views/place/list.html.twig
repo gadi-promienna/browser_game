@@ -1,0 +1,15 @@
+
+    <h2>Zabierz zwierzaka na spacer </h2>
+           
+        {% for place in places %}
+            
+            <button>   <a href="{{ path('walk_animal', { 'animal': animal.id, 'place': place.id }) }}">{{ place.name }}</a>
+            </button>
+               
+        {% endfor %}
+       
+    </table>
+
+
+
+

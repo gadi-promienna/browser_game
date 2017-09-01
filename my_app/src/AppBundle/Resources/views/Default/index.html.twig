@@ -1,0 +1,48 @@
+{% extends '/base.html.twig' %}
+
+{% block body %}
+	<div> <h1> Cześć!  </h1>
+	<h2> Twoim zadaniem będzie opieka nad stworkiem.
+	</div>
+ {% if is_granted('ROLE_USER') %}
+
+	<div> <h2> Teraz, kiedy już jesteś zalogowany - <br> 
+	
+	<a href={{path("animal_new")}}> dodaj stworka </a> <br> lub wpisz 
+	<a href={{path("find_animal")}}>hasło z obroży </a> istniejącego stworka. </h2>
+
+	</div>
+
+{% else %}
+	<div>
+	<h2> Nie ma jednak tak łatwo - na początku zaloguj się lub zarejestruj.
+	</div>
+{% endif %} <br><hr> <br>
+ <center>{% block login %}{% endblock %} </center>
+<br> <br>
+{% if is_granted('ROLE_ADMIN') %}
+<center>
+<div id="admin_panel">
+	<hr>
+		<h2> <img class='icon' src='/images/config.png'>Panel Administracyjny </h2>
+	<br>
+	<table>
+		<thead>
+	 		
+         </thead>
+		<tbody>
+		<tr>
+
+			<td><a href={{path("animal_index")}}> Nadzoruj stworki  </a> </td>
+			<td><a href={{path("toy_index")}}> Zarządzaj zabawkami </a> </td>
+			<td> <a href={{path("place_index")}}> Organizuj miejsca na spacery </a> </td>
+			<td> <a href={{path("food_index")}}> Zarządzaj jedzeniem </a> </td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+</center>
+
+{% endif %}
+
+{% endblock %}
