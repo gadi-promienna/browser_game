@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-use \src\UserBundle\Entity\User;
+use UserBundle\Entity\User;
 
 /**
  * Animal
@@ -104,7 +104,7 @@ class Animal
 
     /**
      * @var src\UserBundle\Entity\User as $user
-     * @ORM\ManyToOne(targetEntity="Player", inversedBy="animals")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="animals")
      * JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $owner;

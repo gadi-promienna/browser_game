@@ -1,7 +1,7 @@
 
 body
 {
-background-image: url('http://www.hdwallpaperspulse.com/wp-content/uploads/2012/10/bg8large.jpg');
+background-image: url('/images/background.jpg');
 	background-repeat: repeat-x;
 
 
@@ -184,4 +184,11 @@ background-image: url("/images/burnout.png");
 background-image: url("/images/hopeless.png");
 
 
+}
+
+#logs_list
+{
+
+	max-height: 13cm;
+	overflow: scroll;
 }

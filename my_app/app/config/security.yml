@@ -41,4 +41,5 @@ security:
         - { path: ^/toy/*, role: ROLE_ADMIN }
         - { path: ^/place/*, role: ROLE_ADMIN }
         - { path: ^/food/*, role: ROLE_ADMIN }
+        - { path: ^/logs/*, role: ROLE_ADMIN }
        

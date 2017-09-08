@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use AppBundle\Entity\Logs;
 
 /**
  * LogsRepository
@@ -12,4 +13,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class LogsRepository extends EntityRepository
 {
+
+	public function make_log($event)
+	{	$date = date_create('now');
+		$log = new Logs();
+     	$log->setDate($date);
+     	$log->setEvent($event);
+		$em = $this ->getEntityManager();
+		$em->persist($log);
+    	$em->flush();
+
+	}
+
+
 }
