@@ -16,17 +16,34 @@ use Symfony\Component\HttpFoundation\Session\Session;
  */
 class AnimalController extends Controller
 {
+
+
     /**
-     * Lists all animal entities.
+     * Index action.
      *
-     * @Route("/", name="animal_index")
+     * @param integer $page Current page number
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     *
+     * @Route(
+     *     "/",
+     *     defaults={"page": 1},
+     *     name="animal_index",
+     * )
+     * @Route(
+     *     "/page/{page}",
+     *     requirements={"page": "[1-9]\d*"},
+     *     name="animal_index_paginated",
+     * )
      * @Method("GET")
      */
-    public function indexAction()
+
+
+    public function indexAction($page)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $animals = $em->getRepository('AppBundle:Animal')->findAll();
+        $animals = $em->getRepository('AppBundle:Animal')->findAllPaginated($page);
 
         return $this->render('animal/index.html.twig', array(
             'animals' => $animals,
@@ -240,12 +257,10 @@ class AnimalController extends Controller
 
 
             $em = $this->getDoctrine()->getManager();
-            $em->remove($animal);
-            $log = $animal->getName()." został usunięty";
-            $em->getRepository('AppBundle:Logs')->make_log($log);
+            $em->remove($user);
             $em->flush();
 
-        return $this->redirectToRoute('animal_index');
+        return $this->redirectToRoute('user_index');
     }
 
 

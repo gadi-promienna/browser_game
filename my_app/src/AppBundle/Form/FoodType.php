@@ -13,7 +13,11 @@ class FoodType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'text')->add('image')->add('energy')->add('height')->add('width');
+        $builder->add('name', 'text', array('label' => 'Nazwa',
+            'translation_domain' => 'AppBundle' ))
+        ->add('energy', 'integer', array('label' => 'Zmiana energii'))
+        ->add('height', 'integer', array('label' => 'Zmiana wysokości'))
+        ->add('width', 'integer', array('label' => 'Zmiana szerokości'));
     }
     
     /**

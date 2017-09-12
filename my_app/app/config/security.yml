@@ -36,6 +36,7 @@ security:
         - { path: ^/animal/.*[0-9]+$, role: ROLE_USER }
         - { path: ^/animal/new, role: ROLE_USER }
         - { path: ^/animal/find_animal, role: ROLE_USER }
+        - { path: ^/user/*, role: ROLE_ADMIN }
         - { path: ^/animal/, role: ROLE_ADMIN}
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/toy/*, role: ROLE_ADMIN }

@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Place edit</h1>
+    <h1>Edytuj miejsce</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <input type="submit" value="Edytuj" />
     {{ form_end(edit_form) }}
 
     <ul>
         <li>
             <a href="{{ path('place_index') }}">Powrót</a>
-        </li>
-        <li>
+        </li></ul>
+        
             {{ form_start(delete_form) }}
                 <input type="submit" value="Usuń">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        
+
 {% endblock %}

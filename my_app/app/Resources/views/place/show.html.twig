@@ -1,22 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Place</h1>
+    <h1>{{ place.name }}</h1>
 
     <table>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ place.id }}</td>
-            </tr>
-            <tr>
-                <th>Imię</th>
-                <td>{{ place.name }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ place.image }}</td>
-            </tr>
             <tr>
                 <th>Radość</th>
                 <td>{{ place.hepiness }}</td>
@@ -30,7 +18,7 @@
                 <td>{{ place.energy }}</td>
             </tr>
             <tr>
-                <th>szerokość</th>
+                <th>Szerokość</th>
                 <td>{{ place.width }}</td>
             </tr>
         </tbody>
@@ -43,10 +31,9 @@
         <li>
             <a href="{{ path('place_edit', { 'id': place.id }) }}">Edytuj</a>
         </li>
-        <li>
+        </ul>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Usuń">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+     
 {% endblock %}

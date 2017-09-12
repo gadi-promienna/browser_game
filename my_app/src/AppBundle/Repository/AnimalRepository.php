@@ -4,6 +4,9 @@ namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use AppBundle\Entity\Animal;
 /**
  * AnimalRepository
  *
@@ -12,4 +15,31 @@ use Doctrine\ORM\EntityRepository;
  */
 class AnimalRepository extends EntityRepository
 {
+
+	  /**
+     * Gets all records paginated.
+     *
+     * @param int $page Page number
+     *
+     * @return \Pagerfanta\Pagerfanta Result
+     */
+    public function findAllPaginated($page = 1)
+    {
+        $paginator = new Pagerfanta(new DoctrineORMAdapter($this->queryAll(), false));
+        $paginator->setMaxPerPage(Animal::NUM_ITEMS);
+        $paginator->setCurrentPage($page);
+
+        return $paginator;
+    }
+
+    /**
+     * Query all entities.
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    protected function queryAll()
+    {
+        return $this->createQueryBuilder('animal');
+    }
+
 }
