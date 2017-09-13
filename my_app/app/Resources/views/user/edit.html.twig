@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Stwórz zabawkę</h1>
+    <h1>Zmień dane użytkownika</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Dodaj" />
+        <input type="submit" value="Edytuj" />
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('toy_index') }}">Powrót</a>
+            <a href="{{ path('user_index') }}">Wróć do listy</a>
         </li>
+
     </ul>
 {% endblock %}

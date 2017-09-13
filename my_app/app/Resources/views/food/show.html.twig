@@ -1,21 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Food</h1>
+    <h1>Jedzenie</h1>
 
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ food.id }}</td>
-            </tr>
-            <tr>
-                <th>Imie</th>
+                <th>Nazwa</th>
                 <td>{{ food.name }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ food.image }}</td>
             </tr>
             <tr>
                 <th>Energia</th>
@@ -26,7 +18,7 @@
                 <td>{{ food.height }}</td>
             </tr>
             <tr>
-                <th>szerokość jaką dodaje</th>
+                <th>Szerokość jaką dodaje</th>
                 <td>{{ food.width}}</td>
             </tr>
         </tbody>

@@ -1,18 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Zabawka</h1>
+    <h1>{{toy.name }}</h1>
 
     <table>
         <tbody>
-            <tr>
-                <th>Nazwa</th>
-                <td>{{ toy.name }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ toy.image }}</td>
-            </tr>
+            
             <tr>
                 <th>Radość</th>
                 <td>{{ toy.hapiness }}</td>
@@ -32,10 +25,9 @@
             <a href="{{ path('toy_edit', { 'id': toy.id }) }}">Edytuj</a>
         </li>
     </ul>
-        <li>
+       
             {{ form_start(delete_form) }}
                 <input type="submit" value="Usuń">
             {{ form_end(delete_form) }}
-        </li>
-    
+        
 {% endblock %}

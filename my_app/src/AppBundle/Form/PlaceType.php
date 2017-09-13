@@ -13,7 +13,11 @@ class PlaceType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('image')->add('hepiness')->add('strength')->add('energy')->add('width');
+        $builder->add('name', 'text', array('label' => 'Nazwa'))
+        ->add('hepiness', 'integer',  array('label' => 'Przyrost radości'))
+        ->add('strength', 'integer', array('label' => 'Przyrost siły'))
+        ->add('energy', 'integer', array('label' => 'Zmiana energii'))
+        ->add('width', 'integer', array('label' => 'Zmiana szerokości'));
     }
     
     /**

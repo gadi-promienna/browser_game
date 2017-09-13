@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-use \src\UserBundle\Entity\User;
+use UserBundle\Entity\User;
 
 /**
  * Animal
@@ -14,6 +14,14 @@ use \src\UserBundle\Entity\User;
  */
 class Animal
 {
+
+    /**
+     * Use constants to define configuration options that rarely change instead
+     * of specifying them in app/config/config.yml.
+     * See http://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
+     */
+    const NUM_ITEMS = 2;
+
     /**
      * @var int
      *
@@ -101,10 +109,9 @@ class Animal
      * @ORM\Column(name="energy", type="integer")
      */
     private $energy;
-
-    /**
+ /**
      * @var src\UserBundle\Entity\User as $user
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Player", inversedBy="animals")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="animals")
      * JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $owner;

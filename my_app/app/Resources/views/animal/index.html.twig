@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Lista stworzeń </h1>
 
+
+
+    <h1>Lista stworzeń </h1>
+ 
     <table>
         <thead>
             <tr>
@@ -15,12 +18,13 @@
                 <th>Siła</th>
                 <th>Inteligencja</th>
                 <th>Radość</th>
-                <th>Senność</th>
+                
                 <th>Energia</th>
                <th>Akcje</th>
             </tr>
         </thead>
         <tbody>
+    {% if animals is defined and animals|length %}
         {% for animal in animals %}
             <tr>
                 <td>{{ animal.name }}</td>
@@ -31,7 +35,6 @@
                 <td>{{ animal.strength }}</td>
                 <td>{{ animal.intelligence }}</td>
                 <td>{{ animal.hapiness }}</td>
-                <td>{{ animal.sleepiness }}</td>
                 <td>{{ animal.energy }}</td>
                 <td>
                     <ul>
@@ -51,10 +54,17 @@
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
+        
 
     <ul>
         <li>
             <a href="{{ path('animal_new') }}">Dodaj stworka </a>
         </li>
     </ul>
+
+    <div class="navigation text-center">
+            {{ pagerfanta(animals, 'twitter_bootstrap3_translated', { routeName: ('animal_index_paginated') }) }}
+        </div>
+ <br>
 {% endblock %}

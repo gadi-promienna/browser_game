@@ -1,30 +1,32 @@
 <?php
 
-namespace AppBundle\Form;
+namespace UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ToyType extends AbstractType
+class UserType extends AbstractType
 {
+
     /**
      * {@inheritdoc}
      */
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'text', array('translation_domain' => 'translations/AppBundle.pl.yml', 'label'=>'Nazwa'))
-        ->add('hapiness', 'integer',  array('label'=>'Zmiana radości' ))
-        ->add('intelligence', 'integer', array('label'=>'Zmiana inteligencji' ));
+        $builder->add('username', 'text', array( 'label' => 'Nazwa użytkownika'))
+        ->add('email', 'text')
+         ->add('roles', 'choice', array( 'label' => 'Rola', 'multiple'=>true,
+               'choices'=>array('ROLE_SUPER_ADMIN'=>'administrator',
+                                'ROLE_USER'=>'użytkownik')
+               ));
     }
-    
-    /**
-     * {@inheritdoc}
-     */
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Toy'
+            'data_class' => 'UserBundle\Entity\User'
         ));
     }
 
@@ -33,7 +35,7 @@ class ToyType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_toy';
+        return 'userbundle_user';
     }
 
 

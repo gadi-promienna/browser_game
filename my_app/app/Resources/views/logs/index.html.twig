@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1> Logi gry </h1><br> <br>
+<div id="logs_list">
+	{% for log in logs %}
+	<b> {{log.date.format('Y-m-d H:i')}} </b>: {{log.event}}.
+	 -> <a href="{{ path('simple_delete_log', { 'id': log.id }) }}">Usuń</a> <br>
+	 {% endfor %}
+</div>
+
+
+
+{% endblock %}

@@ -16,17 +16,34 @@ use Symfony\Component\HttpFoundation\Session\Session;
  */
 class AnimalController extends Controller
 {
+
+
     /**
-     * Lists all animal entities.
+     * Index action.
      *
-     * @Route("/", name="animal_index")
+     * @param integer $page Current page number
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     *
+     * @Route(
+     *     "/",
+     *     defaults={"page": 1},
+     *     name="animal_index",
+     * )
+     * @Route(
+     *     "/page/{page}",
+     *     requirements={"page": "[1-9]\d*"},
+     *     name="animal_index_paginated",
+     * )
      * @Method("GET")
      */
-    public function indexAction()
+
+
+    public function indexAction($page)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $animals = $em->getRepository('AppBundle:Animal')->findAll();
+        $animals = $em->getRepository('AppBundle:Animal')->findAllPaginated($page);
 
         return $this->render('animal/index.html.twig', array(
             'animals' => $animals,
@@ -95,13 +112,15 @@ class AnimalController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($animal);
             $this->get('session')->set('animal_access', $animal);
-            
             $animal->setEnergy(10);
             $animal->setHapiness(5);
             $animal->setIntelligence(1);
             $animal->setStrength(1);
-            $animal->setOwner($this->get('fos_user.user_provider.username'));
-
+            $owner = $this->container->get('security.context')->getToken()->getUser();
+            $animal->setOwner($owner);
+            $animal->setSleepiness(1);
+            $log = $animal->getName()." został utworzony przez ".$this->container->get('security.context')->getToken()->getUsername();
+            $em->getRepository('AppBundle:Logs')->make_log($log);
             $em->flush();
 
             return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
@@ -217,6 +236,8 @@ class AnimalController extends Controller
                 }
 
             $changes =$this->get('app.repository.changes')->timeChanges($animal);
+            $log = $animal->getName()." dostał do zjedzenia ".$food->getName()." od użytkownika ".$this->container->get('security.context')->getToken()->getUsername();
+            $em->getRepository('AppBundle:Logs')->make_log($log);
 
             $em->flush();
             return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
@@ -225,7 +246,7 @@ class AnimalController extends Controller
 
 
  /**
-     * Deletes without form a animal entity.
+     * Deletes without form.
      *
      * @Route("delete/{id}", name="simple_delete_animal")
      * @Method({"GET", "DELETE"})
@@ -236,10 +257,10 @@ class AnimalController extends Controller
 
 
             $em = $this->getDoctrine()->getManager();
-            $em->remove($animal);
+            $em->remove($user);
             $em->flush();
 
-        return $this->redirectToRoute('animal_index');
+        return $this->redirectToRoute('user_index');
     }
 
 
@@ -266,7 +287,8 @@ class AnimalController extends Controller
                 }
 
             $changes =$this->get('app.repository.changes')->timeChanges($animal);
-
+            $log = $animal->getName()." został wzięty na spacer do: ".$place->getName()." przez użytkownika ".$this->container->get('security.context')->getToken()->getUsername();
+            $em->getRepository('AppBundle:Logs')->make_log($log);
             $em->flush();
             return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
 
@@ -282,7 +304,7 @@ class AnimalController extends Controller
             $animal = $animals->findOneById($animal);
             $toys = $em->getRepository('AppBundle:Toy');
             $toy = $toys->findOneById($toy);
-            if($animal->getEnergy()>5 && $animal->getSleepiness()>0 && $animal->getHapiness()<30 )
+            if($animal->getEnergy()>5 && $animal->getHapiness()<30 )
             {
                  
                 $changes =$this->get('app.repository.changes')->hapinessChange($animal, $toy);
@@ -293,6 +315,9 @@ class AnimalController extends Controller
                
             
             }
+
+            $log = $animal->getName()." dostał do zabawy ".$toy->getName()." od użytkownika ".$this->container->get('security.context')->getToken()->getUsername();
+            $em->getRepository('AppBundle:Logs')->make_log($log);
 
             $em->flush();
             return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
@@ -321,6 +346,8 @@ class AnimalController extends Controller
             $energy = $animal->getEnergy();
             $energy = $energy - 3;
             $animal -> setEnergy($energy);
+            $log = $animal->getName()." został pogłaskany przez ".$this->container->get('security.context')->getToken()->getUsername();
+            $em->getRepository('AppBundle:Logs')->make_log($log);
             $em->flush();
             return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
 
