@@ -5,8 +5,10 @@ Gra przeglądarkowa polegająca na zarządaniu okrągłymi stworkami. Nakarm, po
 ## Instalacja
 
 Żeby uruchomić aplikacje należy wejść do folderu my_app i zaktualizować lub zainstalować komposera poleceniem:
+
 curl -sS https://getcomposer.org/installer | php - instalowanie
 php ../composer.phar -vvv update - aktualizacja
+
 Następnie w celu uruchomienia lokalnie aplikacji należy w katalogu projektu wywołać polecenie - php app/console server:run i wejść pod wskazany adres.
 
 Dodawanie administatora aplikacji z poziomu konsoli
