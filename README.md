@@ -5,18 +5,20 @@ Gra przeglądarkowa polegająca na zarządaniu okrągłymi stworkami. Nakarm, po
 ## Instalacja
 
 Żeby uruchomić aplikacje należy wejść do folderu my_app i zaktualizować lub zainstalować komposera poleceniem:
+```bash
+$ curl -sS https://getcomposer.org/installer | php - instalowanie
+```
 
-curl -sS https://getcomposer.org/installer | php - instalowanie
-
-
-php ../composer.phar -vvv update - aktualizacja
-
+```bash
+$ php ../composer.phar -vvv update - aktualizacja
+```
 Następnie w celu uruchomienia lokalnie aplikacji należy w katalogu projektu wywołać polecenie - php app/console server:run i wejść pod wskazany adres.
 
 Dodawanie administatora aplikacji z poziomu konsoli
 ---------------------------------------------------
- php app/console fos:user:create nazwa_administatora mail hasło --super-admin 
- 
+ ```bash
+$ php app/console fos:user:create nazwa_administatora mail hasło --super-admin 
+ ```
 Obsługa
  -------
 Kiedy aplikacja jest poprawnie zainstalowana wystarczy utworzyć konto użytkownika i zalogować się. Zalogowani użytkownicy mogą dodawać stworki i się nimi opiekować. Żeby zajmować się wcześniej utworzonym stworkiem trzeba wpisać jego imię i hasło.
