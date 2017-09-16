@@ -22,9 +22,8 @@ class FoodController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $foods = $em->getRepository('AppBundle:Food')->findAll();
+        $foods=$this->get('app.repository.food')->findAll();
 
         return $this->render('food/index.html.twig', array(
             'foods' => $foods,
@@ -38,9 +37,9 @@ class FoodController extends Controller
  */
         public function listAction($animal)
     {
-        $em = $this->getDoctrine()->getManager();
+        
 
-        $foods = $em->getRepository('AppBundle:Food')->findAll();
+        $foods = $this->get('app.repository.food')->findAll();
 
         return $this->render('food/list.html.twig', array(
             'foods' => $foods, 'animal' => $animal,
@@ -60,9 +59,7 @@ class FoodController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($food);
-            $em->flush();
+            $this->get('app.repository.food')->save($food);
 
             return $this->redirectToRoute('food_show', array('id' => $food->getId()));
         }
@@ -126,9 +123,7 @@ class FoodController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($food);
-            $em->flush();
+            $this->get('app.repository.food')->delete($food);
         }
 
         return $this->redirectToRoute('food_index');

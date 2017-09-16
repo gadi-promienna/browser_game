@@ -23,9 +23,9 @@ class LogsController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+       
 
-        $logs = $em->getRepository('AppBundle:Logs')->findBy([], ['date' => 'DESC']);
+        $logs = $this->get('app.repository.logs')->findBy([], ['date' => 'DESC']);
 
         return $this->render('logs/index.html.twig', array(
             'logs' => $logs,
@@ -43,9 +43,7 @@ class LogsController extends Controller
     {
 
 
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($log);
-            $em->flush();
+           $this -> get('app.repository.logs')-> delete($log);
 			return $this->redirectToRoute('logs_index');
     }
 

@@ -26,4 +26,27 @@ class LogsRepository extends EntityRepository
 	}
 
 
+	    /**
+     * Save entity.
+     *
+     * @param Logs $log Logs entity
+     */
+    public function save(Logs $log)
+    {
+        $this->_em->persist($log);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Logs $log Logs entity
+     */
+    public function delete(Logs $log)
+    {
+        $this->_em->remove($log);
+        $this->_em->flush();
+    }
+
+
 }

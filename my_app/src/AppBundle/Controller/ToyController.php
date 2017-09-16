@@ -22,9 +22,8 @@ class ToyController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $toys = $em->getRepository('AppBundle:Toy')->findAll();
+        $toys = $this->get('app.repository.toy')->findAll();
 
         return $this->render('toy/index.html.twig', array(
             'toys' => $toys,
@@ -36,9 +35,9 @@ class ToyController extends Controller
  */
         public function listAction($animal)
     {
-        $em = $this->getDoctrine()->getManager();
+        
 
-        $toys = $em->getRepository('AppBundle:Toy')->findAll();
+        $toys = $this->get('app.repository.toy')->findAll();
 
         return $this->render('toy/list.html.twig', array(
             'toys' => $toys, 'animal' => $animal,
@@ -58,10 +57,7 @@ class ToyController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($toy);
-            $em->flush();
-
+             $this->get('app.repository.toy')->save($toy);
             return $this->redirectToRoute('toy_show', array('id' => $toy->getId()));
         }
 
@@ -124,9 +120,7 @@ class ToyController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($toy);
-            $em->flush();
+             $this->get('app.repository.toy')->save($toy);
         }
 
         return $this->redirectToRoute('toy_index');

@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(
  *     name="fos_user"
  * )
+ @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {
@@ -35,4 +36,6 @@ class User extends BaseUser
     {
         parent::__construct();
     }
+
+    const NUM_ITEMS = 4;
 }

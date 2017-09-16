@@ -22,9 +22,8 @@ class PlaceController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $places = $em->getRepository('AppBundle:Place')->findAll();
+        
+        $places = $this->get('app.repository.place')->findAll();
 
         return $this->render('place/index.html.twig', array(
             'places' => $places,
@@ -37,9 +36,9 @@ class PlaceController extends Controller
  */
         public function listAction($animal)
     {
-        $em = $this->getDoctrine()->getManager();
+        
 
-        $places = $em->getRepository('AppBundle:Place')->findAll();
+        $places = $this->get('app.repository.place')->findAll();
 
         return $this->render('place/list.html.twig', array(
             'places' => $places, 'animal' => $animal,
@@ -58,9 +57,7 @@ class PlaceController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($place);
-            $em->flush();
+            $this->get('app.repository.place')->save($place);
 
             return $this->redirectToRoute('place_show', array('id' => $place->getId()));
         }
@@ -124,9 +121,7 @@ class PlaceController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($place);
-            $em->flush();
+             $this->get('app.repository.place')->delete($place);
         }
 
         return $this->redirectToRoute('place_index');

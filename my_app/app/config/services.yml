@@ -10,3 +10,43 @@ services:
 
   app.repository.changes:
     class: AppBundle\Repository\ChangesRepository
+
+  app.repository.food:
+    class: AppBundle\Repository\FoodRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - AppBundle\Entity\Food
+
+  app.repository.animal:
+    class: AppBundle\Repository\AnimalRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - AppBundle\Entity\Animal
+
+  app.repository.toy:
+    class: AppBundle\Repository\ToyRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - AppBundle\Entity\Toy
+
+
+  app.repository.place:
+    class: AppBundle\Repository\PlaceRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - AppBundle\Entity\Place
+
+  app.repository.user:
+    class: UserBundle\Repository\UserRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - UserBundle\Entity\User
+
+  app.repository.logs:
+    class: AppBundle\Repository\LogsRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - AppBundle\Entity\Logs  
+
+
+          

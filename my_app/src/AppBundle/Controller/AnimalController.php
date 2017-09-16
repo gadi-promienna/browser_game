@@ -41,9 +41,8 @@ class AnimalController extends Controller
 
     public function indexAction($page)
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $animals = $em->getRepository('AppBundle:Animal')->findAllPaginated($page);
+        $animals = $this->get('app.repository.animal')->findAllPaginated($page);
 
         return $this->render('animal/index.html.twig', array(
             'animals' => $animals,
@@ -64,8 +63,8 @@ class AnimalController extends Controller
         $name = $form->get('name')->getData();
          if ($form->isSubmitted() && $form->isValid()) 
          {
-            $em = $this->getDoctrine()->getManager();
-            $animals = $em->getRepository('AppBundle:Animal');
+            
+            $animals = $this->get('app.repository.animal');
             $animal = $animals->findOneByName($name);
             
                if($animal!=Null)
@@ -109,8 +108,6 @@ class AnimalController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($animal);
             $this->get('session')->set('animal_access', $animal);
             $animal->setEnergy(10);
             $animal->setHapiness(5);
@@ -120,8 +117,8 @@ class AnimalController extends Controller
             $animal->setOwner($owner);
             $animal->setSleepiness(1);
             $log = $animal->getName()." został utworzony przez ".$this->container->get('security.context')->getToken()->getUsername();
-            $em->getRepository('AppBundle:Logs')->make_log($log);
-            $em->flush();
+            $this->get('app.repository.logs')->make_log($log);
+             $this->get('app.repository.animal')->save($animal);
 
             return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
         }
@@ -185,9 +182,7 @@ class AnimalController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($animal);
-            $em->flush();
+             $this->get('app.repository.animal')->delete($animal);
         }
 
         return $this->redirectToRoute('animal_index');
@@ -219,9 +214,9 @@ class AnimalController extends Controller
      public function feed_animal($animal, $food)
      {
             $em = $this->getDoctrine()->getManager();
-            $animals = $em->getRepository('AppBundle:Animal');
+            $animals = $this->get('app.repository.animal');
             $animal = $animals->findOneById($animal);
-            $foods = $em->getRepository('AppBundle:Food');
+            $foods = $this->get('app.repository.food');
             $food = $foods->findOneById($food);
             if($animal->getEnergy()<20)
             {
@@ -237,7 +232,7 @@ class AnimalController extends Controller
 
             $changes =$this->get('app.repository.changes')->timeChanges($animal);
             $log = $animal->getName()." dostał do zjedzenia ".$food->getName()." od użytkownika ".$this->container->get('security.context')->getToken()->getUsername();
-            $em->getRepository('AppBundle:Logs')->make_log($log);
+            $this->get('app.repository.logs')->make_log($log);
 
             $em->flush();
             return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
@@ -257,10 +252,10 @@ class AnimalController extends Controller
 
 
             $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
+            $em->remove($animal);
             $em->flush();
 
-        return $this->redirectToRoute('user_index');
+        return $this->redirectToRoute('animal_index');
     }
 
 
@@ -270,9 +265,9 @@ class AnimalController extends Controller
      public function walk_your_animal($animal, $place)
      {
             $em = $this->getDoctrine()->getManager();
-            $animals = $em->getRepository('AppBundle:Animal');
+            $animals = $this->get('app.repository.animal');
             $animal = $animals->findOneById($animal);
-            $places = $em->getRepository('AppBundle:Place');
+            $places = $this->get('app.repository.place');
             $place = $places->findOneById($place);
             if($animal->getEnergy()>5)
             {
@@ -288,7 +283,7 @@ class AnimalController extends Controller
 
             $changes =$this->get('app.repository.changes')->timeChanges($animal);
             $log = $animal->getName()." został wzięty na spacer do: ".$place->getName()." przez użytkownika ".$this->container->get('security.context')->getToken()->getUsername();
-            $em->getRepository('AppBundle:Logs')->make_log($log);
+            $this->get('app.repository.logs')->make_log($log);
             $em->flush();
             return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
 
@@ -300,9 +295,9 @@ class AnimalController extends Controller
      public function play_toy($animal, $toy)
      {
             $em = $this->getDoctrine()->getManager();
-            $animals = $em->getRepository('AppBundle:Animal');
+            $animals = $this->get('app.repository.animal');
             $animal = $animals->findOneById($animal);
-            $toys = $em->getRepository('AppBundle:Toy');
+            $toys = $this->get('app.repository.toy');
             $toy = $toys->findOneById($toy);
             if($animal->getEnergy()>5 && $animal->getHapiness()<30 )
             {
@@ -317,7 +312,7 @@ class AnimalController extends Controller
             }
 
             $log = $animal->getName()." dostał do zabawy ".$toy->getName()." od użytkownika ".$this->container->get('security.context')->getToken()->getUsername();
-            $em->getRepository('AppBundle:Logs')->make_log($log);
+            $this->get('app.repository.logs')->make_log($log);
 
             $em->flush();
             return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
@@ -331,7 +326,7 @@ class AnimalController extends Controller
      public function pet_animal($animal)
      {
             $em = $this->getDoctrine()->getManager();
-            $animals = $em->getRepository('AppBundle:Animal');
+            $animals = $this->get('app.repository.animal');
             $animal = $animals->findOneById($animal);
             $height = $animal->getHeight();
             $height= $height - 2;
@@ -347,7 +342,7 @@ class AnimalController extends Controller
             $energy = $energy - 3;
             $animal -> setEnergy($energy);
             $log = $animal->getName()." został pogłaskany przez ".$this->container->get('security.context')->getToken()->getUsername();
-            $em->getRepository('AppBundle:Logs')->make_log($log);
+            $this->get('app.repository.logs')->make_log($log);
             $em->flush();
             return $this->redirectToRoute('animal_show', array('id' => $animal->getId()));
 

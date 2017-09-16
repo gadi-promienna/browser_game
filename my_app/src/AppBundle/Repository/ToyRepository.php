@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use AppBundle\Entity\Toy;
 
 /**
  * ToyRepository
@@ -12,4 +13,26 @@ use Doctrine\ORM\EntityRepository;
  */
 class ToyRepository extends EntityRepository
 {
+
+	    /**
+     * Save entity.
+     *
+     * @param Toy $toy Toy entity
+     */
+    public function save(Toy $toy)
+    {
+        $this->_em->persist($toy);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Toy $toy Toy entity
+     */
+    public function delete(Toy $toy)
+    {
+        $this->_em->remove($toy);
+        $this->_em->flush();
+    }
 }
