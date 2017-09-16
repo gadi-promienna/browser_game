@@ -15,14 +15,27 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class UserController extends Controller
 {
     /**
-     * Lists all user entities.
+          * Index action.
      *
-     * @Route("/", name="user_index")
+     * @param integer $page Current page number
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     *
+     * @Route(
+     *     "/",
+     *     defaults={"page": 1},
+     *     name="user_index",
+     * )
+     * @Route(
+     *     "/page/{page}",
+     *     requirements={"page": "[1-9]\d*"},
+     *     name="user_index_paginated",
+     * )
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction($page)
     {
-        $users = $this->container->get('fos_user.user_manager')->findUsers();
+        $users = $this->container->get('app.repository.user')->findAllPaginated($page);
 
         #$users = $em->getRepository('UserBundle:User')->findAll();
 
@@ -44,12 +57,11 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
             $user->setEnabled(true);
-            $em->flush();
-
+            
+             $this ->container-> get('fos_user.user_manager')->save($user);
             return $this->redirectToRoute('user_index');
+           
         }
 
         return $this->render('user/new.html.twig', array(
@@ -137,9 +149,7 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush();
+            
         }
 
         return $this->redirectToRoute('user_index');
@@ -171,12 +181,10 @@ class UserController extends Controller
     public function simple_delete_Action(Request $request, user $user)
     {
 
-
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush();
-
+        $this->container->get('fos_user.user_manager')->deleteUser($user);
         return $this->redirectToRoute('user_index');
+
+
     }
 
 }
