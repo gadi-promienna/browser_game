@@ -37,7 +37,7 @@ class UserRepository extends EntityRepository
      * Safe user
      * @param user $user
      */
-     public function save(User $user)
+     public function safe(User $user)
     {   
 
         $em = $this ->getEntityManager();
