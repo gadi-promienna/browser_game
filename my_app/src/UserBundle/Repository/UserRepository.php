@@ -32,6 +32,19 @@ class UserRepository extends EntityRepository
         return $paginator;
     }
 
+
+     /**
+     * Safe user
+     * @param user $user
+     */
+     public function save(User $user)
+    {   
+
+        $em = $this ->getEntityManager();
+        $em->persist($user);
+        $em->flush();
+    }
+
     /**
      * Query all entities.
      *
