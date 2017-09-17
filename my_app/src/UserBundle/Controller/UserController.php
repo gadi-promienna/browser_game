@@ -59,7 +59,7 @@ class UserController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setEnabled(true);
             
-             $this ->container-> get('fos_user.user_manager')->save($user);
+             $this ->container-> get('app.repository.user')->save($user);
             return $this->redirectToRoute('user_index');
            
         }
