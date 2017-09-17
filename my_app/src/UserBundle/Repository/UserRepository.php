@@ -34,8 +34,8 @@ class UserRepository extends EntityRepository
 
 
      /**
-     * Query all entities.
-     * safe user
+     * Safe user
+     * @param user $user
      */
      public function save(User $user)
     {   
