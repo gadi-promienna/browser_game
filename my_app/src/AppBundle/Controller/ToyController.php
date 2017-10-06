@@ -1,4 +1,7 @@
 <?php
+/**
+ * Toy controller
+ */
 
 namespace AppBundle\Controller;
 
@@ -17,7 +20,7 @@ class ToyController extends Controller
     /**
      * Lists all toy entities.
      *
-     * @Route("/", name="toy_index")
+     * @Route("/",    name="toy_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -25,29 +28,38 @@ class ToyController extends Controller
 
         $toys = $this->get('app.repository.toy')->findAll();
 
-        return $this->render('toy/index.html.twig', array(
+        return $this->render(
+            'toy/index.html.twig', array(
             'toys' => $toys,
-        ));
+            )
+        );
     }
 
     /**
- * @Route("toy/list", name="toy_list")
- */
-        public function listAction($animal)
+    * Show toy in actions menu.
+    *
+    *@param Animal $animal The animal entity
+    * @Route("toy/list", name="toy_list")
+    */
+    public function listAction($animal)
     {
         
 
         $toys = $this->get('app.repository.toy')->findAll();
 
-        return $this->render('toy/list.html.twig', array(
+        return $this->render(
+            'toy/list.html.twig', array(
             'toys' => $toys, 'animal' => $animal,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new toy entity.
      *
-     * @Route("/new", name="toy_new")
+     * @param          \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     * @Route("/new",  name="toy_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -61,14 +73,18 @@ class ToyController extends Controller
             return $this->redirectToRoute('toy_show', array('id' => $toy->getId()));
         }
 
-        return $this->render('toy/new.html.twig', array(
+        return $this->render(
+            'toy/new.html.twig', array(
             'toy' => $toy,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Finds and displays a toy entity.
+     *
+     * @param Toy $toy The toy entity
      *
      * @Route("/{id}", name="toy_show")
      * @Method("GET")
@@ -77,17 +93,22 @@ class ToyController extends Controller
     {
         $deleteForm = $this->createDeleteForm($toy);
 
-        return $this->render('toy/show.html.twig', array(
+        return $this->render(
+            'toy/show.html.twig', array(
             'toy' => $toy,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing toy entity.
      *
+     * @param               \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @param               Toy  $toy     The toy entity
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
      * @Route("/{id}/edit", name="toy_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Toy $toy)
     {
@@ -101,17 +122,22 @@ class ToyController extends Controller
             return $this->redirectToRoute('toy_edit', array('id' => $toy->getId()));
         }
 
-        return $this->render('toy/edit.html.twig', array(
+        return $this->render(
+            'toy/edit.html.twig', array(
             'toy' => $toy,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a toy entity.
      *
-     * @Route("/{id}", name="toy_delete")
+     * @param            \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @param            Toy                                       $toy     The toy entity
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     * @Route("/{id}",   name="toy_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Toy $toy)
@@ -138,7 +164,6 @@ class ToyController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('toy_delete', array('id' => $toy->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

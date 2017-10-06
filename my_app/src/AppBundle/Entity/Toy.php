@@ -1,4 +1,8 @@
 <?php
+/**
+ * Toy entity
+ */
+
 
 namespace AppBundle\Entity;
 
@@ -13,6 +17,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Toy
 {
     /**
+     * Primary key.
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -22,6 +28,8 @@ class Toy
     private $id;
 
     /**
+     * Name.
+     *
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=45, unique=true)
@@ -29,6 +37,8 @@ class Toy
     private $name;
 
     /**
+     * Image.
+     *
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
@@ -36,6 +46,8 @@ class Toy
     private $image;
 
     /**
+     * Heppy change.
+     *
      * @var int
      *
      * @ORM\Column(name="hapiness", type="integer")
@@ -43,6 +55,8 @@ class Toy
     private $hapiness;
 
     /**
+     * Intelligence level.
+     *
      * @var int
      *
      * @ORM\Column(name="intelligence", type="integer")
@@ -63,7 +77,7 @@ class Toy
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Toy
      */
     public function setName($name)
@@ -86,7 +100,7 @@ class Toy
     /**
      * Set image
      *
-     * @param string $image
+     * @param  string $image
      * @return Toy
      */
     public function setImage($image)
@@ -109,7 +123,7 @@ class Toy
     /**
      * Set hapiness
      *
-     * @param integer $hapiness
+     * @param  integer $hapiness
      * @return Toy
      */
     public function setHapiness($hapiness)
@@ -132,7 +146,7 @@ class Toy
     /**
      * Set intelligence
      *
-     * @param integer $intelligence
+     * @param  integer $intelligence
      * @return Toy
      */
     public function setIntelligence($intelligence)

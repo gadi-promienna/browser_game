@@ -2,7 +2,7 @@
 
 {% block body %}
 	<div> <h1> Cześć!  </h1>
-	<h2> Twoim zadaniem będzie opieka nad stworkiem.
+	<h2> Twoim zadaniem będzie opieka nad stworkiem. </h2>
 	</div>
  {% if is_granted('ROLE_USER') %}
 
@@ -15,7 +15,7 @@
 
 {% else %}
 	<div>
-	<h2> Nie ma jednak tak łatwo - na początku zaloguj się lub zarejestruj.
+	<h2> Nie ma jednak tak łatwo - na początku zaloguj się lub zarejestruj. </h2>
 	</div>
 {% endif %} <br><hr> <br>
  <center>{% block login %}{% endblock %} </center>
@@ -24,7 +24,7 @@
 <center>
 <div id="admin_panel">
 	<hr>
-		<h2> <img class='icon' src='/images/config.png'>Panel Administracyjny </h2>
+		<h2> <img class='icon' src='{{ asset('images/config.png')}}'>Panel Administracyjny </h2>
 	<br>
 	<table>
 		<thead>
@@ -37,7 +37,6 @@
 			<td><a href={{path("toy_index")}}> Zarządzaj zabawkami </a> </td>
 			<td> <a href={{path("place_index")}}> Organizuj miejsca na spacery </a> </td>
 			<td> <a href={{path("food_index")}}> Zarządzaj jedzeniem </a> </td>
-			<td> <a href={{path("user_index")}}> Zarządzaj użytkownikami</a> </td>
 			<td> <a href={{path("logs_index")}}> Logi gry </a> </td>
 		</tr>
 		</tbody>

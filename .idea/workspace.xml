@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="386e8cb8-7861-40d5-b5fa-520d694f986e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/my_app/app/Resources/views/default/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/PlayerController.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.phar" afterPath="$PROJECT_DIR$/composer.phar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/composer.json" afterPath="$PROJECT_DIR$/my_app/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/composer.lock" afterPath="$PROJECT_DIR$/my_app/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/AppBundle.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/AppBundle.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/AnimalController.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/AnimalController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/DefaultController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/FoodController.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/FoodController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/LogsController.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/LogsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/PlaceController.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/PlaceController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/ToyController.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Controller/ToyController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Animal.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Animal.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Food.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Food.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Logs.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Logs.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Place.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Place.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Player.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Player.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Toy.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Entity/Toy.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Form/AnimalType.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Form/AnimalType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Form/FindAnimalType.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Form/FindAnimalType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Form/FoodType.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Form/FoodType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Form/PlaceType.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Form/PlaceType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Form/PlayerType.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Form/PlayerType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Form/ToyType.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Form/ToyType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/AnimalRepository.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/AnimalRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/ChangesRepository.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/ChangesRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/FoodRepository.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/FoodRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/LogsRepository.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/LogsRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/PlaceRepository.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/PlaceRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/PlayerRepository.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/PlayerRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/ToyRepository.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Repository/ToyRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Resources/views/Default/index.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Tests/Controller/AnimalControllerTest.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Tests/Controller/AnimalControllerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Tests/Controller/FoodControllerTest.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Tests/Controller/FoodControllerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Tests/Controller/PlaceControllerTest.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Tests/Controller/PlaceControllerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Tests/Controller/PlayerControllerTest.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Tests/Controller/PlayerControllerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/AppBundle/Tests/Controller/ToyControllerTest.php" afterPath="$PROJECT_DIR$/my_app/src/AppBundle/Tests/Controller/ToyControllerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/UserBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/my_app/src/UserBundle/Controller/DefaultController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/UserBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/my_app/src/UserBundle/Controller/UserController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/my_app/src/UserBundle/Entity/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/UserBundle/Form/NewType.php" afterPath="$PROJECT_DIR$/my_app/src/UserBundle/Form/NewType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/UserBundle/Form/PasswordType.php" afterPath="$PROJECT_DIR$/my_app/src/UserBundle/Form/PasswordType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/UserBundle/Form/UserType.php" afterPath="$PROJECT_DIR$/my_app/src/UserBundle/Form/UserType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/UserBundle/Repository/UserRepository.php" afterPath="$PROJECT_DIR$/my_app/src/UserBundle/Repository/UserRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/UserBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/my_app/src/UserBundle/Resources/views/Default/index.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/UserBundle/Tests/Controller/UserControllerTest.php" afterPath="$PROJECT_DIR$/my_app/src/UserBundle/Tests/Controller/UserControllerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_app/src/UserBundle/UserBundle.php" afterPath="$PROJECT_DIR$/my_app/src/UserBundle/UserBundle.php" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="AnimalController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/my_app/src/AppBundle/Controller/AnimalController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1657">
+              <caret line="256" column="9" lean-forward="true" selection-start-line="256" selection-start-column="9" selection-end-line="256" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-223" />
+    <option name="y" value="245" />
+    <option name="width" value="1346" />
+    <option name="height" value="728" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="browser-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="browser-game" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="browser-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="browser-game" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="my_app" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="browser-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="browser-game" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="my_app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="browser-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="browser-game" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="my_app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="browser-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="browser-game" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="my_app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="browser-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="browser-game" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="my_app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="nodejs_interpreter_path" value="/usr/bin/node" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="386e8cb8-7861-40d5-b5fa-520d694f986e" name="Default" comment="" />
+      <created>1506178862512</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1506178862512</updated>
+      <workItem from="1506178870650" duration="1870000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1870000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-223" y="245" width="1346" height="728" extended-state="0" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290735" sideWeight="0.14136904" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290735" sideWeight="0.85863096" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/my_app/src/AppBundle/Controller/AnimalController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1657">
+          <caret line="256" column="9" lean-forward="true" selection-start-line="256" selection-start-column="9" selection-end-line="256" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
