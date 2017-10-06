@@ -1,4 +1,8 @@
 <?php
+/**
+ * Player entity
+ */
+
 
 namespace AppBundle\Entity;
 
@@ -13,6 +17,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Player
 {
     /**
+     * Primary key.
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -22,6 +28,8 @@ class Player
     private $id;
 
     /**
+     * Login.
+     *
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=45, unique=true)
@@ -29,6 +37,8 @@ class Player
     private $login;
 
     /**
+     * Primary password.
+     *
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=45)
@@ -36,6 +46,8 @@ class Player
     private $password;
 
     /**
+     * Role.
+     *
      * @var string
      *
      * @ORM\Column(name="role", type="string", length=10)
@@ -43,6 +55,8 @@ class Player
     private $role;
 
     /**
+     * Mail.
+     *
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=45, unique=true)
@@ -50,6 +64,8 @@ class Player
     private $mail;
 
     /**
+     * Last login.
+     *
      * @var \DateTime
      *
      * @ORM\Column(name="last_login", type="datetime")
@@ -57,6 +73,8 @@ class Player
     private $lastLogin;
 
     /**
+     * Name.
+     *
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=45, unique=true)
@@ -77,7 +95,7 @@ class Player
     /**
      * Set login
      *
-     * @param string $login
+     * @param  string $login
      * @return Player
      */
     public function setLogin($login)
@@ -100,7 +118,7 @@ class Player
     /**
      * Set password
      *
-     * @param string $password
+     * @param  string $password
      * @return Player
      */
     public function setPassword($password)
@@ -123,7 +141,7 @@ class Player
     /**
      * Set role
      *
-     * @param string $role
+     * @param  string $role
      * @return Player
      */
     public function setRole($role)
@@ -146,7 +164,7 @@ class Player
     /**
      * Set mail
      *
-     * @param string $mail
+     * @param  string $mail
      * @return Player
      */
     public function setMail($mail)
@@ -169,7 +187,7 @@ class Player
     /**
      * Set lastLogin
      *
-     * @param \DateTime $lastLogin
+     * @param  \DateTime $lastLogin
      * @return Player
      */
     public function setLastLogin($lastLogin)
@@ -192,7 +210,7 @@ class Player
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Player
      */
     public function setName($name)

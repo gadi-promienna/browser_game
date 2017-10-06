@@ -1,4 +1,7 @@
 <?php
+/**
+ * Food controller
+ */
 
 namespace AppBundle\Controller;
 
@@ -17,40 +20,46 @@ class FoodController extends Controller
     /**
      * Lists all food entities.
      *
-     * @Route("/", name="food_index")
+     * @Route("/",    name="food_index")
      * @Method("GET")
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $foods = $em->getRepository('AppBundle:Food')->findAll();
+        $foods=$this->get('app.repository.food')->findAll();
 
-        return $this->render('food/index.html.twig', array(
+        return $this->render(
+            'food/index.html.twig', array(
             'foods' => $foods,
-        ));
+            )
+        );
     }
 
-/**
- * Food controller.
+    /**
+ * Show food items in actions menu.
  *
+ * @param  Animal $animal The animal entity
  * @Route("food/list", name="food_list")
  */
-        public function listAction($animal)
+    public function listAction($animal)
     {
-        $em = $this->getDoctrine()->getManager();
+        
 
-        $foods = $em->getRepository('AppBundle:Food')->findAll();
+        $foods = $this->get('app.repository.food')->findAll();
 
-        return $this->render('food/list.html.twig', array(
+        return $this->render(
+            'food/list.html.twig', array(
             'foods' => $foods, 'animal' => $animal,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new food entity.
      *
-     * @Route("/new", name="food_new")
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     * @Route("/new",  name="food_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -60,22 +69,23 @@ class FoodController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($food);
-            $em->flush();
+            $this->get('app.repository.food')->save($food);
 
             return $this->redirectToRoute('food_show', array('id' => $food->getId()));
         }
 
-        return $this->render('food/new.html.twig', array(
+        return $this->render(
+            'food/new.html.twig', array(
             'food' => $food,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Finds and displays a food entity.
      *
+     * @param Food $food The food entity
      * @Route("/{id}", name="food_show")
      * @Method("GET")
      */
@@ -83,17 +93,22 @@ class FoodController extends Controller
     {
         $deleteForm = $this->createDeleteForm($food);
 
-        return $this->render('food/show.html.twig', array(
+        return $this->render(
+            'food/show.html.twig', array(
             'food' => $food,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing food entity.
      *
+     * @param               \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @param               food $food    The food entity
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
      * @Route("/{id}/edit", name="food_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Food $food)
     {
@@ -107,17 +122,22 @@ class FoodController extends Controller
             return $this->redirectToRoute('food_edit', array('id' => $food->getId()));
         }
 
-        return $this->render('food/edit.html.twig', array(
+        return $this->render(
+            'food/edit.html.twig', array(
             'food' => $food,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a food entity.
      *
-     * @Route("/{id}", name="food_delete")
+     * @param            \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @param   food   $food    The food entity
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     * @Route("/{id}",   name="food_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Food $food)
@@ -126,9 +146,7 @@ class FoodController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($food);
-            $em->flush();
+            $this->get('app.repository.food')->delete($food);
         }
 
         return $this->redirectToRoute('food_index');
@@ -146,7 +164,6 @@ class FoodController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('food_delete', array('id' => $food->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

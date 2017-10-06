@@ -1,4 +1,7 @@
 <?php
+/**
+ * User controller.
+ */
 
 namespace UserBundle\Controller;
 
@@ -15,28 +18,44 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class UserController extends Controller
 {
     /**
-     * Lists all user entities.
+    * Index action.
      *
-     * @Route("/", name="user_index")
+     * @param integer $page Current page number
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     *
+     * @Route(
+     *     "/",
+     *     defaults={"page": 1},
+     *     name="user_index",
+     * )
+     * @Route(
+     *     "/page/{page}",
+     *     requirements={"page": "[1-9]\d*"},
+     *     name="user_index_paginated",
+     * )
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction($page)
     {
-        $users = $this->container->get('fos_user.user_manager')->findUsers();
+        $users = $this->container->get('app.repository.user')->findAllPaginated($page);
 
-        #$users = $em->getRepository('UserBundle:User')->findAll();
-
-        return $this->render('user/index.html.twig', array(
+        return $this->render(
+            'user/index.html.twig', array(
             'users' => $users,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new user entity.
      *
-     * @Route("/new", name="user_new")
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @return         \Symfony\Component\HttpFoundation\Response HTTP Response
+     * @Route("/new",  name="user_new")
      * @Method({"GET", "POST"})
      */
+
     public function newAction(Request $request)
     {
         $user = new User();
@@ -44,23 +63,25 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
             $user->setEnabled(true);
-            $em->flush();
-
+            
+             $this ->container-> get('app.repository.user')->save($user);
+            
             return $this->redirectToRoute('user_index');
         }
 
-        return $this->render('user/new.html.twig', array(
+        return $this->render(
+            'user/new.html.twig', array(
             'user' => $user,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Finds and displays a user entity.
      *
+     * @param  User $user The user entity
      * @Route("/{id}", name="user_show")
      * @Method("GET")
      */
@@ -68,17 +89,22 @@ class UserController extends Controller
     {
         $deleteForm = $this->createDeleteForm($user);
 
-        return $this->render('user/show.html.twig', array(
+        return $this->render(
+            'user/show.html.twig', array(
             'user' => $user,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing user entity.
-     *
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @param User $user The user entity
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     * @return User $user The user entity
      * @Route("/{id}/edit", name="user_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, User $user)
     {
@@ -103,13 +129,16 @@ class UserController extends Controller
     /**
      * Displays a form to edit an existing user entity.
      *
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @param  User $user    The user entity
+     * @return  \Symfony\Component\HttpFoundation\Response HTTP Response
      * @Route("/{id}/password", name="user_edit_password")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",          "POST"})
      */
-    public function edit_passwordAction(Request $request, User $user)
+    public function editPasswordAction(Request $request, User $user)
     {
         
-         $form = $this->createForm('UserBundle\Form\PasswordType', $user);
+        $form = $this->createForm('UserBundle\Form\PasswordType', $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -127,8 +156,10 @@ class UserController extends Controller
 
     /**
      * Deletes a user entity.
-     *
-     * @Route("/{id}", name="user_delete")
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @param User  $user   The user entity
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     * @Route("/{id}",   name="user_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, User $user)
@@ -136,14 +167,29 @@ class UserController extends Controller
         $form = $this->createDeleteForm($user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush();
-        }
-
         return $this->redirectToRoute('user_index');
     }
+
+
+    /**
+     * Deletes without form.
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @param User $user The user entity
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     * @Route("delete/{id}", name="simple_delete_user")
+     * @Method({"GET",       "DELETE"})
+     */
+
+    public function simpleDeleteAction(Request $request, user $user)
+    {
+
+        $this->container->get('fos_user.user_manager')->deleteUser($user);
+       
+        return $this->redirectToRoute('user_index');
+
+
+    }
+
 
     /**
      * Creates a form to delete a user entity.
@@ -157,26 +203,6 @@ class UserController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
-
-    /**
-     * Deletes without form.
-     *
-     * @Route("delete/{id}", name="simple_delete_user")
-     * @Method({"GET", "DELETE"})
-     */
-
-    public function simple_delete_Action(Request $request, user $user)
-    {
-
-
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush();
-
-        return $this->redirectToRoute('user_index');
-    }
-
 }

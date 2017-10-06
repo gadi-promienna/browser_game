@@ -32,6 +32,7 @@
         "white-october/pagerfanta-bundle": "^1.0"
     },
     "require-dev": {
+        "phpdocumentor/phpdocumentor": "dev-master",
         "sensio/generator-bundle": "~3.0",
         "symfony/phpunit-bridge": "~2.7"
     },

@@ -1,8 +1,15 @@
 <?php
+/**
+ * User controller test.
+ */
 
 namespace UserBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+/**
+ * Class UserControllerTest.
+ */
 
 class UserControllerTest extends WebTestCase
 {

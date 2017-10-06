@@ -1,4 +1,7 @@
 <?php
+/**
+ * Place controller
+ */
 
 namespace AppBundle\Controller;
 
@@ -17,38 +20,46 @@ class PlaceController extends Controller
     /**
      * Lists all place entities.
      *
-     * @Route("/", name="place_index")
+     * @Route("/",    name="place_index")
      * @Method("GET")
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        
+        $places = $this->get('app.repository.place')->findAll();
 
-        $places = $em->getRepository('AppBundle:Place')->findAll();
-
-        return $this->render('place/index.html.twig', array(
+        return $this->render(
+            'place/index.html.twig', array(
             'places' => $places,
-        ));
+            )
+        );
     }
 
 
-/**
+    /**
+ * Show palces in actions menu.
+ *
+ * @param Animal $animal The animal entity
  * @Route("place/list", name="place_list")
  */
-        public function listAction($animal)
+    public function listAction($animal)
     {
-        $em = $this->getDoctrine()->getManager();
+        
 
-        $places = $em->getRepository('AppBundle:Place')->findAll();
+        $places = $this->get('app.repository.place')->findAll();
 
-        return $this->render('place/list.html.twig', array(
+        return $this->render(
+            'place/list.html.twig', array(
             'places' => $places, 'animal' => $animal,
-        ));
+            )
+        );
     }
     /**
      * Creates a new place entity.
      *
-     * @Route("/new", name="place_new")
+     * @param          \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     * @Route("/new",  name="place_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -58,22 +69,23 @@ class PlaceController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($place);
-            $em->flush();
+            $this->get('app.repository.place')->save($place);
 
             return $this->redirectToRoute('place_show', array('id' => $place->getId()));
         }
 
-        return $this->render('place/new.html.twig', array(
+        return $this->render(
+            'place/new.html.twig', array(
             'place' => $place,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Finds and displays a place entity.
      *
+     * @param          Place $place The place entity
      * @Route("/{id}", name="place_show")
      * @Method("GET")
      */
@@ -81,17 +93,22 @@ class PlaceController extends Controller
     {
         $deleteForm = $this->createDeleteForm($place);
 
-        return $this->render('place/show.html.twig', array(
+        return $this->render(
+            'place/show.html.twig', array(
             'place' => $place,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing place entity.
      *
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP
+     * @param  Place $place The place entity
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
      * @Route("/{id}/edit", name="place_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Place $place)
     {
@@ -105,16 +122,21 @@ class PlaceController extends Controller
             return $this->redirectToRoute('place_edit', array('id' => $place->getId()));
         }
 
-        return $this->render('place/edit.html.twig', array(
+        return $this->render(
+            'place/edit.html.twig', array(
             'place' => $place,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a place entity.
      *
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     * @param  Place $place The place entity
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
      * @Route("/{id}", name="place_delete")
      * @Method("DELETE")
      */
@@ -124,9 +146,7 @@ class PlaceController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($place);
-            $em->flush();
+             $this->get('app.repository.place')->delete($place);
         }
 
         return $this->redirectToRoute('place_index');
@@ -136,7 +156,7 @@ class PlaceController extends Controller
      * Creates a form to delete a place entity.
      *
      * @param Place $place The place entity
-     *
+     * 
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm(Place $place)
@@ -144,7 +164,6 @@ class PlaceController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('place_delete', array('id' => $place->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

@@ -1,4 +1,8 @@
 <?php
+/**
+ * Logs entity
+ */
+
 
 namespace AppBundle\Entity;
 
@@ -13,6 +17,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Logs
 {
     /**
+     * Primary key.
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -22,6 +28,8 @@ class Logs
     private $id;
 
     /**
+     * Datetime.
+     *
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
@@ -29,6 +37,8 @@ class Logs
     private $date;
 
     /**
+     * Event.
+     *
      * @var string
      *
      * @ORM\Column(name="event", type="text")
@@ -49,7 +59,7 @@ class Logs
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param  \DateTime $date
      * @return Logs
      */
     public function setDate($date)
@@ -72,7 +82,7 @@ class Logs
     /**
      * Set event
      *
-     * @param string $event
+     * @param  string $event
      * @return Logs
      */
     public function setEvent($event)
