@@ -38,7 +38,7 @@ class UserRepository extends EntityRepository
 
          /**
          * Save user
-       *
+         *
          * @param user $user
          */
     public function save(User $user)
@@ -58,4 +58,5 @@ class UserRepository extends EntityRepository
     {
         return $this->createQueryBuilder('user');
     }
+
 }
