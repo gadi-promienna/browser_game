@@ -1,8 +1,15 @@
 <?php
+/**
+ * Player controller test
+ */
 
 namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+/**
+ * Class PlayerControllerTest.
+ */
 
 class PlayerControllerTest extends WebTestCase
 {

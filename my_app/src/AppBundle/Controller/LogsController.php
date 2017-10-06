@@ -1,4 +1,7 @@
 <?php
+/**
+ * Logs controller
+ */
 
 namespace AppBundle\Controller;
 
@@ -15,10 +18,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class LogsController extends Controller
 {
 
-   /**
+    /**
      * Lists all logs entities.
      *
-     * @Route("/", name="logs_index")
+     * @Route("/",    name="logs_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -27,24 +30,27 @@ class LogsController extends Controller
 
         $logs = $this->get('app.repository.logs')->findBy([], ['date' => 'DESC']);
 
-        return $this->render('logs/index.html.twig', array(
+        return $this->render(
+            'logs/index.html.twig', array(
             'logs' => $logs,
-        ));
+            )
+        );
     }
 
      /**
      * Delete without form.
-     *
+      *
+     * @param                Logs $log The log entity
      * @Route("delete/{id}", name="simple_delete_log")
-     * @Method({"GET", "DELETE"})
+     * @Method({"GET",       "DELETE"})
      */
 
-    public function simple_delete_Action(Request $request, Logs $log)
+    public function simpleDeleteAction(Logs $log)
     {
 
 
            $this -> get('app.repository.logs')-> delete($log);
-			return $this->redirectToRoute('logs_index');
+        return $this->redirectToRoute('logs_index');
     }
 
 

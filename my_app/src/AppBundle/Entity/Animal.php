@@ -1,4 +1,7 @@
 <?php
+/**
+ * Animal entity
+ */
 
 namespace AppBundle\Entity;
 
@@ -9,6 +12,7 @@ use UserBundle\Entity\User;
 
 /**
  * Animal
+ *
  * @ORM\Table(name="animal")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AnimalRepository")
  */
@@ -23,6 +27,8 @@ class Animal
     const NUM_ITEMS = 2;
 
     /**
+     * Primary key.
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -32,6 +38,8 @@ class Animal
     private $id;
 
     /**
+     * Password.
+     *
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
@@ -40,6 +48,8 @@ class Animal
 
 
     /**
+     * Name.
+     *
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=45, unique=true)
@@ -47,6 +57,8 @@ class Animal
     private $name;
 
     /**
+     * Color.
+     *
      * @var string
      *
      * @ORM\Column(name="color", type="string", length=7)
@@ -54,6 +66,8 @@ class Animal
     private $color;
 
     /**
+     * Age.
+     *
      * @var int
      *
      * @ORM\Column(name="age", type="integer")
@@ -61,6 +75,8 @@ class Animal
     private $age;
 
     /**
+     * Width.
+     *
      * @var integer
      *
      * @ORM\Column(name="width", type="integer")
@@ -68,6 +84,8 @@ class Animal
     private $width;
 
     /**
+     * Height.
+     *
      * @var int
      *
      * @ORM\Column(name="height", type="integer")
@@ -75,6 +93,8 @@ class Animal
     private $height;
 
     /**
+     * Strength.
+     *
      * @var int
      *
      * @ORM\Column(name="strength", type="integer")
@@ -82,6 +102,8 @@ class Animal
     private $strength;
 
     /**
+     * Intelligence.
+     *
      * @var int
      *
      * @ORM\Column(name="intelligence", type="integer")
@@ -89,6 +111,8 @@ class Animal
     private $intelligence;
 
     /**
+     * Hapiness.
+     *
      * @var int
      *
      * @ORM\Column(name="hapiness", type="integer")
@@ -96,6 +120,8 @@ class Animal
     private $hapiness;
 
     /**
+     * Sleepiness level.
+     *
      * @var int
      *
      * @ORM\Column(name="sleepiness", type="integer")
@@ -104,6 +130,8 @@ class Animal
 
 
     /**
+     * Energy level.
+     *
      * @var int
      *
      * @ORM\Column(name="energy", type="integer")
@@ -111,6 +139,8 @@ class Animal
     private $energy;
 
     /**
+     * Animal owner.
+     *
      * @var src\UserBundle\Entity\User as $user
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="animals")
      * JoinColumn(name="user_id", referencedColumnName="id")
@@ -131,7 +161,7 @@ class Animal
     /**
      * Set owner
      *
-     * @param \Doctrine\Common\Collections\ArrayCollection $animals
+     * @param  User $owner
      * @return Animal
      */
     public function setOwner($owner)
@@ -142,9 +172,11 @@ class Animal
     }
 
     /**
-     * Get owner
+     * Get owner.
      *
-     * @return \Doctrine\Common\Collections\ArrayCollection $animals
+     * @param User $user
+     *
+     * @return User $owner
      */
 
     public function getOwner()
@@ -155,7 +187,7 @@ class Animal
      /**
      * Set password
      *
-     * @param string $password
+     * @param  string $password
      * @return Animal
      */
     public function setPassword($password)
@@ -178,7 +210,7 @@ class Animal
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Animal
      */
     public function setName($name)
@@ -201,7 +233,7 @@ class Animal
     /**
      * Set color
      *
-     * @param string $color
+     * @param  string $color
      * @return Animal
      */
     public function setColor($color)
@@ -224,7 +256,7 @@ class Animal
     /**
      * Set age
      *
-     * @param integer $age
+     * @param  integer $age
      * @return Animal
      */
     public function setAge($age)
@@ -247,7 +279,7 @@ class Animal
     /**
      * Set width
      *
-     * @param integer $width
+     * @param  integer $width
      * @return Animal
      */
     public function setWidth($width)
@@ -270,7 +302,7 @@ class Animal
     /**
      * Set height
      *
-     * @param integer $height
+     * @param  integer $height
      * @return Animal
      */
     public function setHeight($height)
@@ -293,7 +325,7 @@ class Animal
     /**
      * Set strength
      *
-     * @param integer $strength
+     * @param  integer $strength
      * @return Animal
      */
     public function setStrength($strength)
@@ -316,7 +348,7 @@ class Animal
     /**
      * Set intelligence
      *
-     * @param integer $intelligence
+     * @param  integer $intelligence
      * @return Animal
      */
     public function setIntelligence($intelligence)
@@ -339,7 +371,7 @@ class Animal
     /**
      * Set hapiness
      *
-     * @param integer $hapiness
+     * @param  integer $hapiness
      * @return Animal
      */
     public function setHapiness($hapiness)
@@ -362,7 +394,7 @@ class Animal
     /**
      * Set sleepiness
      *
-     * @param integer $sleepiness
+     * @param  integer $sleepiness
      * @return Animal
      */
     public function setSleepiness($sleepiness)
@@ -383,10 +415,10 @@ class Animal
     }
 
  
-   /**
+    /**
      * Set energy
      *
-     * @param integer $energy
+     * @param  integer $energy
      * @return Animal
      */
     public function setEnergy($energy)
@@ -406,4 +438,4 @@ class Animal
         return $this->energy;
     }
 
- }
+}

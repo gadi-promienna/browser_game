@@ -1,8 +1,15 @@
 <?php
+/**
+ * Food controller test
+ */
 
 namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+/**
+ * Class FoodControllerTest.
+ */
 
 class FoodControllerTest extends WebTestCase
 {

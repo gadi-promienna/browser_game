@@ -1,4 +1,7 @@
 <?php
+/**
+ * Default controller.
+ */
 
 namespace UserBundle\Controller;
 
@@ -7,10 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 
-
+/**
+ * Default user controller.
+ */
 class DefaultController extends Controller
 {
     /**
+     * Index action.
+     *
      * @Route("/", name = "main")
      */
     public function indexAction()

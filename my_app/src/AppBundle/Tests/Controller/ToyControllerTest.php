@@ -1,8 +1,15 @@
 <?php
+/**
+ * Toy controller test
+ */
 
 namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+/**
+ * Class ToyControllerTest.
+ */
 
 class ToyControllerTest extends WebTestCase
 {
