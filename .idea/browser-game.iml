@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/nosig.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badsig.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badkey.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/old.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/new.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpdocumentor/phpdocumentor/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/phpdocumentor/fileset/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/phpdocumentor/phpdocumentor/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test-nopubkey.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test-nopubkey.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpdocumentor/phpdocumentor/box.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/zendframework/zend-i18n/test/Translator/_files/translations.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badsig.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/phpdocumentor/phpdocumentor/box.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/old.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpdocumentor/fileset/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/nosig.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/new.phar/" />
+          <root url="phar://$MODULE_DIR$/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badkey.phar/" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/nosig.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badsig.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badkey.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/old.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/new.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpdocumentor/phpdocumentor/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/phpdocumentor/fileset/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/phpdocumentor/phpdocumentor/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test-nopubkey.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test-nopubkey.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpdocumentor/phpdocumentor/box.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/zendframework/zend-i18n/test/Translator/_files/translations.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badsig.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/phpdocumentor/phpdocumentor/box.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/old.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpdocumentor/fileset/tests/data/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/nosig.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/new.phar/" />
+          <root url="phar://$MODULE_DIR$/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/my_app/vendor/padraic/phar-updater/tests/Humbug/Test/SelfUpdate/_files/build/badkey.phar/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>

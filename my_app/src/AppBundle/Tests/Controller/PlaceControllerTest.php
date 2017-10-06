@@ -1,8 +1,15 @@
 <?php
+/**
+ * Place controller test
+ */
 
 namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+/**
+ * Class PlaceControllerTest.
+ */
 
 class PlaceControllerTest extends WebTestCase
 {

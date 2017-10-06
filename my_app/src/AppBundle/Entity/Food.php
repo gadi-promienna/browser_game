@@ -1,4 +1,8 @@
 <?php
+/**
+ * Food entity
+ */
+
 
 namespace AppBundle\Entity;
 
@@ -13,6 +17,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Food
 {
     /**
+     * Primary key.
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -22,6 +28,8 @@ class Food
     private $id;
 
     /**
+     * Name.
+     *
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=45, unique=true)
@@ -29,6 +37,8 @@ class Food
     private $name;
 
     /**
+     * Image
+     *
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
@@ -36,6 +46,8 @@ class Food
     private $image;
 
     /**
+     * Energy change.
+     *
      * @var int
      *
      * @ORM\Column(name="energy_", type="integer")
@@ -43,6 +55,8 @@ class Food
     private $energy;
 
     /**
+     * Height change.
+     *
      * @var int
      *
      * @ORM\Column(name="height_", type="integer")
@@ -50,6 +64,8 @@ class Food
     private $height;
 
     /**
+     * Width change.
+     *
      * @var int
      *
      * @ORM\Column(name="width_", type="integer")
@@ -70,7 +86,7 @@ class Food
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Food
      */
     public function setName($name)
@@ -93,7 +109,7 @@ class Food
     /**
      * Set image
      *
-     * @param string $image
+     * @param  string $image
      * @return Food
      */
     public function setImage($image)
@@ -116,7 +132,7 @@ class Food
     /**
      * Set energy
      *
-     * @param integer $energy
+     * @param  integer $energy
      * @return Food
      */
     public function setEnergy($energy)
@@ -139,7 +155,7 @@ class Food
     /**
      * Set height
      *
-     * @param integer $height
+     * @param  integer $height
      * @return Food
      */
     public function setHeight($height)
@@ -162,7 +178,7 @@ class Food
     /**
      * Set width
      *
-     * @param integer $width
+     * @param  integer $width
      * @return Food
      */
     public function setWidth($width)

@@ -2,6 +2,7 @@
 /**
  * User entity.
  */
+
 namespace UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
@@ -9,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
+ * User entity class
+ *
  * @ORM\Entity
  * @ORM\Table(
  *     name="fos_user"
@@ -18,6 +21,8 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
+     * Primary key.
+     *
      * @ORM\Id
      * @ORM\Column(
      *     name="id",

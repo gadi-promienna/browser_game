@@ -1,8 +1,15 @@
 <?php
+/**
+ * Animal controller test
+ */
 
 namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+/**
+ * Class AnimalControllerTest.
+ */
 
 class AnimalControllerTest extends WebTestCase
 {
