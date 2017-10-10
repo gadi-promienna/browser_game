@@ -2,7 +2,8 @@
 body
 {
 background-image: url('/images/background.jpg');
-	background-repeat: repeat-x;
+background-color: rgb(176, 49, 17);
+	background-repeat: no-repeat;
 
 
 }
@@ -191,4 +192,17 @@ background-image: url("/images/hopeless.png");
 
 	max-height: 13cm;
 	overflow: scroll;
+}
+
+footer
+{
+	width: 80%;
+	background-color: RGB(210, 210, 210);
+	padding: 30px;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-top-style: solid;
+	border-color:grey;
+	border-width: 1px;
+
 }
